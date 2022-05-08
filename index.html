@@ -166,4 +166,19 @@
       <div class="footer-copyright text-center py-3 text-white">© 2021 Trilogy Education Services, LLC, a 2U, Inc. brand. Confidential and Proprietary. All Rights Reserved.</div>        
     </footer>
 </body>
+<!-- script is ended with a function call as this is defined scope and wants to keep out of the global scope -->
+<script>
+  // Immediately Invoked Function Expression (IIFE) 
+  (function() {
+    // if service worker exists
+    if('serviceWorker' in navigator) {
+      // cannot use an absolute path, must use relative like such (./blabh.js)
+      // this essentially adds a script tag
+      navigator.serviceWorker.register('./service-worker.js')
+        .then(() => console.log('Service Worker registered successfully.'))
+        .catch(error => console.log('Service Worker registration failed:', error));
+    }
+    // this () will immediately invoke the function
+  })();
+</script>
 </html>
